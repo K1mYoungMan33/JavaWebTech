@@ -36,3 +36,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/src/main/java/pro07/DAO_jjh_231220.zip
+/runfolder/

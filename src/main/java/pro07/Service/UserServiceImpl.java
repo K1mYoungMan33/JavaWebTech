@@ -5,6 +5,7 @@ import pro07.DAO.UserDAO;
 import pro07.DTO.User;
 
 import javax.naming.NamingException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService{
@@ -19,6 +20,12 @@ public class UserServiceImpl implements UserService{
     }
 
     public List<User> selectList() { return userDAO.selectList(); }
+
+    @Override
+    public void destroy() throws SQLException {
+        userDAO.destroy();
+    }
+
     @Override
     public int insert(User user) {
         return userDAO.insert( user);
@@ -26,11 +33,11 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public int update(User user) {
-        return 0;
+        return userDAO.update( user);
     }
 
     @Override
-    public int delete(String uid) {
-        return 0;
+    public int delete( int  uid) {
+        return userDAO.delete( uid );
     }
 }

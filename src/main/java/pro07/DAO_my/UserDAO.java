@@ -1,8 +1,8 @@
 package pro07.DAO;
 
-
-
+import pro07.DAO.JDBCConnection;
 import pro07.DTO.Board;
+import pro07.DTO.User;
 
 import javax.naming.NamingException;
 import java.io.FileInputStream;
@@ -16,60 +16,73 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BoardDAO extends JDBCConnection {
+public class UserDAO extends JDBCConnection {
     SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public BoardDAO() throws NamingException {
+    public UserDAO() throws NamingException {
     }
 
+    public User select(String userid) {
+        User user = new User();
+        String sql = "SELECT * "
+                + " FROM User"
+                + " WHERE userid = ?";
+        try (Connection conn = dataSource.getConnection()) {
+            conn.setAutoCommit(false);
 
-    public int insert(Board board)  {
-        int result = 0;
-        String sql = "INSERT INTO Board(title, writer, content, file)"
-                + " VALUES(?,?,?,?) ";
+            psmt = conn.prepareStatement(sql);
+            psmt.setString( 1, userid );
+            rs = psmt.executeQuery();
 
-
-        Connection con = null;
-        Savepoint savepoint = null;
-
-        try{
-            con = dataSource.getConnection();
-            con.setAutoCommit(false);
-
-            savepoint = con.setSavepoint("insertSavePoint");
-            psmt = con.prepareStatement(sql);
-            psmt.setString(1, board.getTitle());
-            psmt.setString(2, board.getWriter());
-            psmt.setString(3, board.getContent());
-
-            FileInputStream fis = null;
-            if ( board.getFile() != null && board.getFile().exists()) {
-                fis = new FileInputStream(board.getFile());
-                psmt.setBinaryStream(4, (InputStream) fis, board.getFile().length());
+            if ( rs.next() ) {
+                user.setUserid(rs.getString( "userid" ) );
+                user.setUsername( rs.getString( "username" ) );
+                user.setPassword( rs.getString( "password" ) );
             }
             else
             {
-                psmt.setNull(4, java.sql.Types.BLOB);
+                System.out.println( "사용자가 없습니다.");
             }
+        }catch ( SQLException e ) {
+            e.printStackTrace();
+        }
 
+        return user;
+    }
 
+    public int insert(User user)  {
+        int result = 0;
+        String sql = "INSERT INTO User(userid, username, password)"
+                + " VALUES(?,?,?) ";
+
+        Savepoint savepoint = null;
+        Connection conn = null;
+        try{
+            conn = dataSource.getConnection();
+            conn.setAutoCommit(false);
+
+            savepoint = conn.setSavepoint("insertSavePoint");
+            psmt = conn.prepareStatement(sql);
+            psmt.setString(1, user.getUserid());
+            psmt.setString(2, user.getUsername());
+            psmt.setString(3, user.getPassword());
             result = psmt.executeUpdate();
 
             if( result > 0) {
-                con.commit();
+                conn.commit();
             }
-        }catch (SQLException | FileNotFoundException e){
+        }catch (SQLException e){
             try{
-                con.rollback(savepoint);
+                conn.rollback(savepoint);
             }catch (SQLException e1){
                 e1.printStackTrace();
             }
             System.out.println("게시글 등록 시, 예외 발생");
             e.printStackTrace();
         }finally {
-            if (con != null) {
+            if (conn != null) {
                 try {
-                    con.close();
+                    conn.close();
                 } catch (SQLException closeEx) {
                     closeEx.printStackTrace();
                 }
@@ -79,39 +92,37 @@ public class BoardDAO extends JDBCConnection {
         return result;
     }
 
-    public List<Board> selectList() {
-        LinkedList<Board> boardList = new LinkedList<>();
+    public List<User> selectList() {
+        LinkedList<User> userList = new LinkedList<>();
 
 
         String sql = " SELECT * "
-                + " FROM board "
-                + " ORDER BY reg_date DESC";
+                + " FROM User "
+                + " ORDER BY uid ASC";
 
-        try (Connection con = dataSource.getConnection()) {
-            con.setAutoCommit(false);
+        try (Connection conn = dataSource.getConnection()) {
+            conn.setAutoCommit(false);
 
-            stmt = con.createStatement();
+            stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
 
-                Board board = new Board();
-                board.setBoard_no( rs.getInt( "board_no" ) );
-                board.setTitle( rs.getString( "title" ));
-                board.setWriter( rs.getString( "writer" ));
-                board.setContent( rs.getString( "content" ));
-                board.setReg_date( dataFormat.format( rs.getTimestamp( "reg_date" )));
-                board.setUpd_date( dataFormat.format( rs.getTimestamp( "upd_date" )));
-                boardList.add(board);
+                User user = new User();
+                user.setUid( rs.getInt( "uid" ) );
+                user.setUserid( rs.getString( "userid" ) );
+                user.setUsername( rs.getString( "username" ));
+                user.setPassword( rs.getString( "password" ));
+                userList.add(user);
             }
         }catch( SQLException e ) {
-            System.out.println( "게시글 목록 받아오기 실패");
+            System.out.println( "사용자 목록 받아오기 실패");
             e.printStackTrace();
         }
         catch ( NullPointerException e ) {
-            System.out.println( "게시글 내용 중 null값이 있습니다.");
+            System.out.println( "사용자 내용 중 null값이 있습니다.");
             e.printStackTrace();
         }
-        return boardList;
+        return userList;
     }
 
     public Board select( int board_no ){
@@ -122,10 +133,10 @@ public class BoardDAO extends JDBCConnection {
         Board board = new Board();
 
 
-        try (Connection con = dataSource.getConnection()) {
-            con.setAutoCommit(false);
+        try (Connection conn = dataSource.getConnection()) {
+            conn.setAutoCommit(false);
 
-            psmt = con.prepareStatement(sql);
+            psmt = conn.prepareStatement(sql);
             psmt.setInt( 1, board_no );
             rs = psmt.executeQuery();
 
@@ -159,48 +170,43 @@ public class BoardDAO extends JDBCConnection {
         return board;
     }
 
-    public int update( Board board ) {
+    public int update( User user ) {
         int result = 0;
-        String sql = " UPDATE Board"
-                + " SET title=?"
-                + ", writer = ?"
-                + ", content = ?"
-                + ", upd_date = now()"
-                + " WHERE board_no = ?";
+        String sql = " UPDATE User"
+                + " SET username=?"
+//                + ", writer = ?"
+                + " WHERE userid = ?";
 
         Savepoint savepoint = null;
-        Connection con = null;
+
+        Connection conn = null;
         try{
-            con = dataSource.getConnection();
-            con.setAutoCommit(false);
+            conn = dataSource.getConnection();
 
-
-            savepoint= con.setSavepoint("UpdateSavePoint");
-            psmt = con.prepareStatement( sql );
-            psmt.setString( 1, board.getTitle() );
-            psmt.setString( 2, board.getWriter() );
-            psmt.setString( 3, board.getContent() );
-            psmt.setInt( 4, board.getBoard_no() );
+            savepoint= conn.setSavepoint("UpdateSavePoint");
+            psmt = conn.prepareStatement( sql );
+            psmt.setString( 1, user.getUsername() );
+            psmt.setString( 2, user.getUserid() );
 
             result = psmt.executeUpdate();
 
             if ( result > 0 ) {
-                con.commit();
+                conn.commit();
             }
         } catch( SQLException e ) {
             try {
-                con.rollback( savepoint );
+                conn.rollback( savepoint );
             }catch ( SQLException e2 ) {
-                System.out.println( "게시글 수정 시 예외 발생 code2");
+                System.out.println( "사용자 수정 시 예외 발생 code2");
                 e2.printStackTrace();
             }
 
-            System.out.println( "게시글 수정 시 예외 발생 code1");
+            System.out.println( "사용자 수정 시 예외 발생 code1");
             e.printStackTrace();
         }finally {
-            if (con != null) {
+            if (conn != null) {
                 try {
-                    con.close();
+                    conn.close();
                 } catch (SQLException closeEx) {
                     closeEx.printStackTrace();
                 }
@@ -208,35 +214,36 @@ public class BoardDAO extends JDBCConnection {
         }
 
 
+
         return result;
     }
 
 
-    public int delete( int board_no ) {
+    public int delete( int uid ) {
         int result = 0;
 
-        String sql = " DELETE FROM Board "
-                + " WHERE board_no= ?";
+        String sql = " DELETE FROM User "
+                + " WHERE uid = ?";
 
         Savepoint savepoint = null;
 
-        Connection con = null;
+        Connection conn = null;
         try{
-            con = dataSource.getConnection();
-            con.setAutoCommit(false);
+            conn = dataSource.getConnection();
+            conn.setAutoCommit(false);
 
-            savepoint= con.setSavepoint("DeleteSavePoint");
-            psmt = con.prepareStatement( sql );
-            psmt.setInt( 1, board_no );
+            savepoint= conn.setSavepoint("DeleteSavePoint");
+            psmt = conn.prepareStatement( sql );
+            psmt.setInt( 1, uid );
 
             result = psmt.executeUpdate();
 
             if ( result > 0 ) {
-                con.commit();
+                conn.commit();
             }
         } catch( SQLException e ) {
             try {
-                con.rollback(savepoint);
+                conn.rollback(savepoint);
             } catch ( SQLException e2 ) {
                 System.out.println( "게시글 삭제 시 예외 발생 code2" );
                 e2.printStackTrace();
@@ -245,14 +252,15 @@ public class BoardDAO extends JDBCConnection {
             System.out.println( "게시글 삭제 시 예외 발생 code1" );
             e.printStackTrace();
         }finally {
-            if (con != null) {
+            if (conn != null) {
                 try {
-                    con.close();
+                    conn.close();
                 } catch (SQLException closeEx) {
                     closeEx.printStackTrace();
                 }
             }
         }
+
 
         return result;
     }
@@ -263,10 +271,10 @@ public class BoardDAO extends JDBCConnection {
                 + " ORDER BY reg_date DESC";
         int result = 0;
 
-        try (Connection con = dataSource.getConnection()) {
-            con.setAutoCommit(false);
+        try (Connection conn = dataSource.getConnection()) {
+            conn.setAutoCommit(false);
 
-            stmt = con.createStatement();
+            stmt = conn.createStatement();
             rs = stmt.executeQuery( sql );
             if (rs.next()) {
                 result = rs.getInt(1);
@@ -288,12 +296,12 @@ public class BoardDAO extends JDBCConnection {
         String sql = "SELECT * "
                 + " FROM Board "
                 + " ORDER BY reg_date DESC limit ? offset ?";
-        try (Connection con = dataSource.getConnection()) {
-            con.setAutoCommit(false);
+        try (Connection conn = dataSource.getConnection()) {
+            conn.setAutoCommit(false);
 
             final int VIEWCOUNT = 15;  // 가져올 게시물 갯수
 
-            psmt = con.prepareStatement( sql );
+            psmt = conn.prepareStatement( sql );
             psmt.setInt( 1, VIEWCOUNT );
             psmt.setInt( 2, pageNo * VIEWCOUNT );
             rs = psmt.executeQuery();
