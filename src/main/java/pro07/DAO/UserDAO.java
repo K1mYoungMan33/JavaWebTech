@@ -16,7 +16,8 @@ import java.util.List;
 public class UserDAO extends JDBCConnection {
     SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public UserDAO() throws NamingException {
+    public UserDAO() throws NamingException , SQLException{
+        super();
     }
 
     public User select(String userid) {

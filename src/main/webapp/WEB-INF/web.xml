@@ -4,4 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <context-param>
+    <param-name>menu_member</param-name>
+    <param-value>회원등록 회원조회 회원수정</param-value>
+  </context-param>
+  <context-param>
+    <param-name>mem_order</param-name>
+    <param-value>주문조회 주문등록 주문취소</param-value>
+  </context-param>
+
+
 </web-app>

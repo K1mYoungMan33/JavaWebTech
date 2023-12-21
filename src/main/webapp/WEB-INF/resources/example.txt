@@ -1,0 +1,16 @@
+exam
+
+
+ServletContext context = getServletContext();
+        String resourcePath = "/WEB-INF/resources/example.txt";
+        InputStream inputStream = context.getResourceAsStream( resourcePath );
+        if ( inputStream != null ) {
+            BufferedReader reader = new BufferedReader( new InputStreamReader( inputStream ) );
+
+
+
+hwoooaaaa!!
+
+
+
+z

@@ -15,5 +15,7 @@
 
 <h2><a href="/pro07/index.jsp">7번프로젝트</a></h2>
 
+<h2><a href="/pro08/">8번프로젝트</a></h2>
+
 </body>
 </html>

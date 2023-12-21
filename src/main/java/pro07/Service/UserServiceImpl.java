@@ -9,7 +9,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService{
-    private final UserDAO userDAO = new UserDAO();
+    private final UserDAO userDAO;
+
+    {
+        try {
+            userDAO = new UserDAO();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public UserServiceImpl() throws NamingException {
     }

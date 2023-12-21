@@ -19,6 +19,8 @@
 <li><a href="/calc">환율계산기</a></li>
 <li><a href="/pro07/user-update">회원정보수정</a></li>
 <li><a href="/pro07/user-list">회원목록보기</a></li>
+12월20일
+<li><a href="/pro07/MemberUserList">회원목록보기</a></li>
 </ul>
 
 
