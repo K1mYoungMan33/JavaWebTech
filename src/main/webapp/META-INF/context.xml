@@ -10,5 +10,5 @@
               password="1234"
               driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/BoardJava?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC"/>
-
+<Manager pathname="/"/>
 </Context>

@@ -1,34 +1,22 @@
-package pro07.Controller;
+package pro08.Servlet.Se;
 
-import pro07.DTO.User;
-import pro07.Service.UserService;
-import pro07.Service.UserServiceImpl;
-
-import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
 
-//  pro07.Controller/MemberUserlist
-@WebServlet(name = "MemberUserlist", value = "/pro07/MemberUserList")
-public class MemberUserlist extends HttpServlet {
+//  pro08.Servlet/Se_se_signin
+@WebServlet(name = "Se_4_Logout", value = "/pro08/Se/SeLogout")
+public class Se_4_Logout extends HttpServlet {
 
-UserService userService;
+
     public void init() {
         System.out.println("init 호출 " + this);
 
-        try {
-            userService = new UserServiceImpl();
-        } catch (NamingException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -52,26 +40,36 @@ UserService userService;
         PrintWriter out = resp.getWriter();
 
 
-//        try {
-//            if ( null != userService )
-//            {
-//                userService.destroy();
-//            }
-//            userService = new UserServiceImpl();
-//        } catch (NamingException e) {
-//            throw new RuntimeException(e);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+        HttpSession session = req.getSession();
 
-        List<User> userList = userService.selectList();
+        if ( session.getAttribute( "userid" ) != null ) {
+            session.removeAttribute( "userid" );
+            session.removeAttribute( "username" );
+        }
+        resp.sendRedirect( "index.jsp" );
 
-        req.setAttribute("UserList",userList);
-        RequestDispatcher dispatcher = req.getRequestDispatcher( "userlist.jsp" );
-//        dispatcher.forward( req, resp );
-        dispatcher.include( req, resp );
+
 
     }
+
+
+    /*
+    //{{ jsp에 다음을 작성
+    <%
+    String userid = (String) session.getAttribute("userid");
+    if(userid !=null)
+    {
+    %>
+        <h1 > 세션값(id) : <%=userid % ></h1 >
+        <h1 > 이름 : <%=username % ></h1 >
+    <%
+    } else{
+    %>
+    <h1>세션이 없습니다.</h1>
+    <%
+        }
+    %>
+    //}} */
 
     //doHead
     //doPost

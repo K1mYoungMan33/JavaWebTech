@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b775319b-170b-45aa-9ffc-c4d1760b4635" name="Changes" comment="21일 수업">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/pro06.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pro06.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pro07/Controller/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pro08/Servlet/GetCookieServlet2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pro08/Servlet/Se/Se_2_Signin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pro08/Servlet/Se/Se_4_Logout.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pro08/Servlet/SessionTestServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/inheritence_demo.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/index_2.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/inheritence_demo.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/layouts/classic.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/layouts/three_rows.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/template.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/tiles/comments.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/tiles/footer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/tiles/header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/tiles/headlines.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/tiles/home.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/tiles/inhertence_demo_body.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/tiles/menu.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/tiles/topics.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/views/includes/Footer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/views/includes/Header.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro07/views/includes/Sidebar.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro08/Se/Se_1_login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro08/Se/Se_3_UserHome.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro08/Se/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/pro08/popup-2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runfolder/conf/Catalina/localhost/ROOT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/runfolder/conf/Catalina/localhost/ROOT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pro08/Servlet/GetContextServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pro08/Servlet/GetContextServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pro07/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pro07/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pro08/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pro08/index.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="BaseServlet" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JavaAutoRunManager">
+    <enabled-run-configurations>
+      <run-configuration type="MavenRunConfiguration" name="pro06 [package]" />
+    </enabled-run-configurations>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2Zjq4VqbLkP9hoklWaZKSboO9QJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/lenovo/IdeaProjects/JavaWebTech/pro06/src/main/webapp/pro07",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/lenovo/IdeaProjects/JavaWebTech/pro06/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.3632184",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.archetype.catalogs",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\IdeaProjects\JavaWebTech\pro06\src\main\webapp\pro07" />
+      <recent name="C:\Users\lenovo\IdeaProjects\JavaWebTech\pro06\src\main\webapp\pro08" />
+      <recent name="C:\Users\lenovo\IdeaProjects\JavaWebTech\pro06\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lenovo\IdeaProjects\JavaWebTech\pro06\src\main\webapp\pro07" />
+      <recent name="C:\Users\lenovo\IdeaProjects\JavaWebTech\pro06\src\main\webapp\pro08\Se" />
+      <recent name="C:\Users\lenovo\IdeaProjects\JavaWebTech\pro06\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\lenovo\IdeaProjects\JavaWebTech\pro06\src\main\webapp" />
+      <recent name="C:\Users\lenovo\IdeaProjects\JavaWebTech\pro06\src\main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="pro08.Servlet" />
+      <recent name="pro8.Servlet" />
+      <recent name="pro07.Controller" />
+      <recent name="org.example" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="com.poratu.idea.plugins.tomcat" nameIsGenerated="true">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="catalinaBase" value="C:\Users\lenovo\IdeaProjects\JavaWebTech\pro06\runfolder" />
+      <option name="contextPath" value="/" />
+      <option name="docBase" value="C:\Users\lenovo\IdeaProjects\JavaWebTech\pro06\src\main\webapp" />
+      <option name="extraClassPath" value="" />
+      <option name="port" value="8086" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.84" />
+          <option name="path" value="$USER_HOME$/Documents/jjjjjjjh/apache-tomcat-9.0.84-windows-x64/apache-tomcat-9.0.84" />
+          <option name="version" value="9.0.84.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <module name="pro06" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-8f899f12" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b775319b-170b-45aa-9ffc-c4d1760b4635" name="Changes" comment="" />
+      <created>1702945648017</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702945648017</updated>
+      <workItem from="1703039322670" duration="90000" />
+      <workItem from="1703049420362" duration="1132000" />
+    </task>
+    <task id="LOCAL-00001" summary="30일 수업">
+      <option name="closed" value="true" />
+      <created>1703054006367</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703054006367</updated>
+    </task>
+    <task id="LOCAL-00002" summary="21일 수업">
+      <option name="closed" value="true" />
+      <created>1703203159777</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703203159778</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="30일 수업" />
+    <MESSAGE value="21일 수업" />
+    <option name="LAST_COMMIT_MESSAGE" value="21일 수업" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/LoginGetParameterServlet.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pro07/Controller/MemberUserEdit.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pro07/Controller/MemberUserEdit.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pro07/Controller/MemberUserDelete.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,34 +1,22 @@
-package pro07.Controller;
+package pro08.Servlet;
 
-import pro07.DTO.User;
-import pro07.Service.UserService;
-import pro07.Service.UserServiceImpl;
-
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
+import java.net.URLEncoder;
+import java.util.Date;
 
-//  pro07.Controller/MemberUserlist
-@WebServlet(name = "MemberUserlist", value = "/pro07/MemberUserList")
-public class MemberUserlist extends HttpServlet {
+//  pro08.Servlet/GetCookieServlet
+@WebServlet(name = "SessionTestServlet", value = "/pro08/SessionTestServlet")
+public class SessionTestServlet extends HttpServlet {
 
-UserService userService;
+
     public void init() {
         System.out.println("init 호출 " + this);
 
-        try {
-            userService = new UserServiceImpl();
-        } catch (NamingException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,25 +39,32 @@ UserService userService;
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
 
+        HttpSession session = req.getSession();
 
-//        try {
-//            if ( null != userService )
-//            {
-//                userService.destroy();
-//            }
-//            userService = new UserServiceImpl();
-//        } catch (NamingException e) {
-//            throw new RuntimeException(e);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+        System.out.println( "session");
+        System.out.println( session );
 
-        List<User> userList = userService.selectList();
+        System.out.println( "getId:" + session.getId() );
+        System.out.println( "getCreationTime:" + new Date(session.getCreationTime() ) );
+        System.out.println( "getLastAccessedTime:" + new Date(session.getLastAccessedTime() ) );
+        System.out.println( "getMaxInactiveInterval:" + session.getMaxInactiveInterval() );
+        session.setMaxInactiveInterval( 2000 );
+        System.out.println( "getMaxInactiveInterval:" + session.getMaxInactiveInterval() );
+        System.out.println( "isNew:" + session.isNew() );
 
-        req.setAttribute("UserList",userList);
-        RequestDispatcher dispatcher = req.getRequestDispatcher( "userlist.jsp" );
-//        dispatcher.forward( req, resp );
+
+
+        session.invalidate(); // 세션을 지운다
+        // 이 구문으로도 세션이 파기되지 않는다면
+        // context.xml 에 다음을 추가
+        // <Manager pathname="SESSIONS.ser"/>
+        // <Manager pathname="/"/>
+
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher( "GetCookie.jsp" );
         dispatcher.include( req, resp );
+
+
 
     }
 

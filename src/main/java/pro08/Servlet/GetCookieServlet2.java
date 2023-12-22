@@ -1,34 +1,25 @@
-package pro07.Controller;
+package pro08.Servlet;
 
-import pro07.DTO.User;
-import pro07.Service.UserService;
-import pro07.Service.UserServiceImpl;
-
-import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
+import java.net.URLEncoder;
+import java.util.Date;
 
-//  pro07.Controller/MemberUserlist
-@WebServlet(name = "MemberUserlist", value = "/pro07/MemberUserList")
-public class MemberUserlist extends HttpServlet {
+//  pro08.Servlet/GetCookieServlet
+@WebServlet(name = "GetCookieServlet", value = "/pro08/GetCookieServlet")
+public class GetCookieServlet2 extends HttpServlet {
 
-UserService userService;
+
     public void init() {
         System.out.println("init 호출 " + this);
 
-        try {
-            userService = new UserServiceImpl();
-        } catch (NamingException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -51,25 +42,24 @@ UserService userService;
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
 
+        Cookie[] cookies = req.getCookies();
+        String popup = "1"; // 기본값
 
-//        try {
-//            if ( null != userService )
-//            {
-//                userService.destroy();
-//            }
-//            userService = new UserServiceImpl();
-//        } catch (NamingException e) {
-//            throw new RuntimeException(e);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+        if ( cookies != null ) {
+            for ( Cookie cookie : cookies ) {
+                if ( cookie.getName().equals("popup" ) ) {
+                    popup = cookie.getValue();
+                    break;
+                }
+            }
+        }
+        System.out.println( "popup 상태->" + popup );
 
-        List<User> userList = userService.selectList();
 
-        req.setAttribute("UserList",userList);
-        RequestDispatcher dispatcher = req.getRequestDispatcher( "userlist.jsp" );
-//        dispatcher.forward( req, resp );
+        RequestDispatcher dispatcher = req.getRequestDispatcher( "popup-2.jsp" );
         dispatcher.include( req, resp );
+
+
 
     }
 

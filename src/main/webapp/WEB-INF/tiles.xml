@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="myapp.common"
+                template="/pro07/layouts/classic.jsp">
+        <put-attribute name="header"
+                       value="/pro07/tiles/header.jsp" />
+        <put-attribute name="menu"
+                       value="/pro07/tiles/menu.jsp" />
+        <put-attribute name="footer"
+                       value="/pro07/tiles/footer.jsp" />
+    </definition>
+
+    <definition name="myapp.homepage" extends="myapp.common">
+        <put-attribute name="title" value="Tiles tutorial homepage" />
+        <put-attribute name="body" value="myapp.home.body" />
+    </definition>
+
+    <definition name="myapp.home.body"
+                template="/pro07/layouts/three_rows.jsp">
+        <put-attribute name="one"
+                       value="/pro07/tiles/headlines.jsp" />
+        <put-attribute name="two"
+                       value="/pro07/tiles/topics.jsp" />
+        <put-attribute name="three"
+                       value="/pro07/tiles/comments.jsp" />
+    </definition>
+
+    <definition name="myapp.inheritence_demo" extends="myapp.common">
+        <put-attribute name="title" value="Definition Inheritence demo"/>
+        <put-attribute name="body" value="/pro07/tiles/inhertence_demo_body.jsp"/>
+    </definition>
+</tiles-definitions>

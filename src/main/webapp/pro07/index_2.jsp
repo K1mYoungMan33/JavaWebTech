@@ -3,33 +3,8 @@
 <html>
 <head>
 <title>Pro7</title>
-<style>
-div{
-border:1px solid blue;
-}
-#leftcolumn{
-display : inline-block;
-
-}
-
-#rightcolumn{
-display : inline-block;
-
-}
-</style>
 </head>
 <body>
-
-<%@ include file="views/includes/Header.jsp"%>
-
-<%@ include file="views/includes/Sidebar.jsp"%>
-
-<a href="#">Download this CSS Layout</a>
-
-<%@ include file="views/includes/Footer.jsp"%>
-
-
-
 
 
 <h1><a href="/pro07/board">게시판 목록보기</a></h1>
